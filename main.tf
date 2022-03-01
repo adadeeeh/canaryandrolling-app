@@ -44,6 +44,6 @@ resource "aws_instance" "blue" {
 resource "aws_lb_target_group_attachment" "blue" {
   count            = length(aws_instance.blue)
   target_group_arn = data.terraform_remote_state.network.outputs.target_group_arn
-  target_id        = aws_instance.blue[count.index].index
+  target_id        = aws_instance.blue[count.index].id
   port             = 80
 }
