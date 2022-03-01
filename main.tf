@@ -64,9 +64,9 @@ resource "aws_instance" "green" {
   }
 }
 
-resource "aws_lb_target_group_attachment" "green" {
-  count            = length(aws_instance.green)
-  target_group_arn = data.terraform_remote_state.network.outputs.tg_green_arn
-  target_id        = aws_instance.green[count.index].id
-  port             = 80
-}
+# resource "aws_lb_target_group_attachment" "green" {
+#   count            = length(aws_instance.green)
+#   target_group_arn = data.terraform_remote_state.network.outputs.tg_green_arn
+#   target_id        = aws_instance.green[count.index].id
+#   port             = 80
+# }
