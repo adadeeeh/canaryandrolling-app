@@ -26,7 +26,7 @@ data "aws_ami" "amazon_linux" {
 }
 
 resource "aws_instance" "blue" {
-  count = var.blue_instance_count ? var.blue_instance_count : 0
+  count = var.enable_blue_env ? var.blue_instance_count : 0
 
   ami                    = data.aws_ami.amazon_linux
   instance_type          = "t2.micro"
