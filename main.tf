@@ -28,7 +28,7 @@ data "aws_ami" "amazon_linux" {
 resource "aws_instance" "blue" {
   count = var.enable_blue_env ? var.blue_instance_count : 0
 
-  ami                    = data.aws_ami.amazon_linux
+  ami                    = data.aws_ami.amazon_linux.id
   instance_type          = "t2.micro"
   subnet_id              = data.terraform_remote_state.network.outputs.public_subnets[count.index % length(data.terraform_remote_state.network.outputs.public_subnets)]
   vpc_security_group_ids = [data.terraform_remote_state.network.outputs.web_sg_id]
